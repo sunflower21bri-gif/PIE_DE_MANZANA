@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pie de Manzana - Rincón de Lecturas & Reseñas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="apple-icon">🍎</span>
+      <h1>Pie de Manzana</h1>
+    </div>
+    <p class="tagline">El rincón más dulce para compartir y calificar tus novelas favoritas</p>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- Sidebar: Add Book Form -->
+    <aside class="form-section">
+      <div class="card">
+        <h2>✨ Añadir Nueva Novela</h2>
+        <form id="book-form">
+          
+          <div class="form-group">
+            <label for="title">Título del Libro</label>
+            <input type="text" id="title" placeholder="Ej: Cien Años de Soledad" required>
+          </div>
+
+          <div class="form-group">
+            <label for="author">Autor(a)</label>
+            <input type="text" id="author" placeholder="Ej: Gabriel García Márquez" required>
+          </div>
+
+          <div class="form-group">
+            <label for="reviewer">Tu Nombre / Apodo</label>
+            <input type="text" id="reviewer" placeholder="Ej: LectorApasionado99" required>
+          </div>
+
+          <!-- Image Option Tabs -->
+          <div class="form-group">
+            <label>Portada del Libro</label>
+            <div class="tab-buttons">
+              <button type="button" class="tab-btn active" onclick="switchTab('file')">📁 Subir Archivo</button>
+              <button type="button" class="tab-btn" onclick="switchTab('url')">🔗 Enlace URL</button>
+            </div>
+            
+            <div id="file-input-container" class="tab-content active">
+              <input type="file" id="cover-file" accept="image/*">
+            </div>
+            
+            <div id="url-input-container" class="tab-content">
+              <input type="url" id="cover-url" placeholder="https://ejemplo.com/portada.jpg">
+            </div>
+
+            <!-- Preview Container -->
+            <div id="image-preview" class="image-preview hidden">
+              <img id="preview-img" src="" alt="Vista previa de portada">
+            </div>
+          </div>
+
+          <!-- Star Rating Picker -->
+          <div class="form-group">
+            <label>Tu Calificación</label>
+            <div class="star-rating-input" id="star-picker">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+            </div>
+            <input type="hidden" id="rating-value" value="5">
+          </div>
+
+          <!-- Comment -->
+          <div class="form-group">
+            <label for="comment">Tu Reseña o Comentario</label>
+            <textarea id="comment" rows="4" placeholder="¿Qué te pareció este libro? Cuéntanos tu experiencia de lectura..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Publicar Reseña 🍎</button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- Main Content: Book Grid -->
+    <section class="books-section">
+      <div class="controls-bar">
+        <h2>📚 Galería de Lecturas (<span id="book-count">0</span>)</h2>
+        <div class="search-filter">
+          <input type="text" id="search-input" placeholder="Buscar por título o autor...">
+          <select id="sort-select">
+            <option value="newest">Más recientes</option>
+            <option value="rating-desc">Mejor valorados</option>
+            <option value="rating-asc">Menor valoración</option>
+            <option value="title">Título (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="books-grid" class="books-grid">
+        <!-- Book Cards dynamically injected here -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Detail Modal -->
+  <div id="book-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="modal-body">
+        <!-- Details injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>🥧 <strong>Pie de Manzana</strong> &copy; 2026 - Un espacio creado con amor para amantes de los libros.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
